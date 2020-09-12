@@ -80,7 +80,7 @@ int main()
 									defectPoint[i].push_back(theContours[i][p_far]);
 									circle(img_roi, theContours[i][p_end], 5, Scalar(0, 255, 0), 5);
 									count++;
-									cout << "Finger Coordinates:(" << theContours[i][p_end] << endl; 
+									//if (theContours[i][p_end].x == xco && theContours[i][p_end].y == yco) 
 								}
 
 							}
@@ -108,6 +108,7 @@ int main()
 								
 								strcpy_s(a, "0 fingers ");
 							}
+
                             putText(img,a,Point(70,70),CV_FONT_HERSHEY_SIMPLEX,3,Scalar(0,0,255),2,8,false);
                             drawContours(img_threshold, theContours, i,Scalar(255,255,0),2, 8, vector<Vec4i>(), 0, Point() );
                             drawContours(img_threshold, hullPoint, i, Scalar(255,255,0),1, 8, vector<Vec4i>(),0, Point());

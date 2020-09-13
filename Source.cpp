@@ -157,17 +157,28 @@ int main()
 
 						}
 						color arr1[] = { cBLUE, cGREEN, cRED, cWHITE };
+						Scalar arr2[] = { Scalar(255, 0, 0), Scalar(0, 255, 255), Scalar(0, 255, 0) };
+						int pud = 0;
 						if (count >= 1) {
-							if (hits - lost == -1) {
+							if (hits - lost >= 4) {
+								pud = 2;
+							}
+							if (hits - lost >= 1 && hits - lost <= 3) {
+								pud = 1;
+							}
+							if (hits - lost < 1) {
+								pud = 0; 
+							}
+							if (hits - lost == -2) {
 								system("CLS");
-								cout << "\t\t\t\tGAME OVER!" << endl; 
+								cout << "G\nA\nM\nE\nO\nV\nE\nR\n!" << endl; 
 								Sleep(2500); 
 								return -1; 
 							}
 							string points = "Points: " + to_string(hits - lost);
 							strcpy_s(a, points.c_str());
 							tripwire++;
-							if (tripwire % 3 == 0 && tripwire != 0) {
+							if (tripwire % 2 == 0 && tripwire != 0) {
 								system("CLS");
 								y += 3;
 								if (y >= 30) {
@@ -185,7 +196,7 @@ int main()
 							strcpy_s(a, "Show Hand");
 							tripwire = 0;
 						}
-						putText(img, a, Point(30, 70), CV_FONT_HERSHEY_SIMPLEX, 3, Scalar(0, 255, 255), 2, 8, false);
+						putText(img, a, Point(30, 70), CV_FONT_HERSHEY_SIMPLEX, 3, arr2[pud], 2, 8, false);
 						drawContours(img_threshold, theContours, i, Scalar(255, 255, 0), 2, 8, vector<Vec4i>(), 0, Point());
 						drawContours(img_threshold, hullPoint, i, Scalar(255, 255, 0), 1, 8, vector<Vec4i>(), 0, Point());
 						drawContours(img_roi, hullPoint, i, Scalar(0, 0, 255), 2, 8, vector<Vec4i>(), 0, Point());

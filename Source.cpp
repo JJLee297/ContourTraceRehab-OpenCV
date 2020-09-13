@@ -43,7 +43,7 @@ void CircleGL1::draw() //draws the circle
 }
 
 bool isNear(int a, int b) {
-	if (abs(a - b) <= 4) {
+	if (abs(a - b) <= 5) {
 		return true;
 	}
 	return false; 
@@ -142,12 +142,13 @@ int main()
 										//strcpy_s(a, "Hit!");
 										//cout << "\nHit!\n" << endl; 
 										x1 = rand() % 80 + 20;
+										r1 = rand() % 4 + 4; 
 										y = 0; 
 										c1.set(x1, y, r1, cBLUE, X_FILL);
 										++hits; 
-										Beep(523, 500);
+										Beep(350, 500);
 										system("CLS");
-										Sleep(300);
+										Sleep(100);
 									}
 								}
 								//cout << "Blade Cords: [" << theContours[i][p_end].x << ", " << theContours[i][p_end].y << "]\t";
@@ -157,7 +158,7 @@ int main()
 
 						}
 						color arr1[] = { cBLUE, cGREEN, cRED, cWHITE };
-						Scalar arr2[] = { Scalar(255, 0, 0), Scalar(0, 255, 255), Scalar(0, 255, 0) };
+						Scalar arr2[] = { Scalar(0, 0, 255), Scalar(0, 255, 255), Scalar(0, 255, 0) };
 						int pud = 0;
 						if (count >= 1) {
 							if (hits - lost >= 4) {
@@ -171,8 +172,9 @@ int main()
 							}
 							if (hits - lost == -2) {
 								system("CLS");
-								cout << "G\nA\nM\nE\nO\nV\nE\nR\n!" << endl; 
-								Sleep(2500); 
+								cout << "\tG\n\t\tA\n\t\t\tM\n\t\t\t\tE\n\t\t\t\t\tO\n\t\t\t\t\t\tV\n\t\t\t\t\t\t\tE\n\t\t\t\t\t\t\t\tR\n!" 
+									<< endl; 
+								Sleep(4500); 
 								return -1; 
 							}
 							string points = "Points: " + to_string(hits - lost);
